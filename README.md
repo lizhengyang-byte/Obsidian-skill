@@ -1,5 +1,8 @@
 # Obsidian CLI — Claude Code Skill
 
+[![Agent Skills](https://img.shields.io/badge/agentskills.io-v1.0.0-blue)](https://github.com/lizhengyang-byte/Obsidian-skill/releases/tag/v1.0.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A [Claude Code](https://claude.ai/code) skill that enables AI-powered interaction with your [Obsidian](https://obsidian.md/) vaults via the built-in Obsidian CLI.
 
 ## Features
@@ -23,23 +26,31 @@ A [Claude Code](https://claude.ai/code) skill that enables AI-powered interactio
 
 ## Installation
 
+### Quick install (agentskills.io)
+
+```bash
+gh skill install lizhengyang-byte/Obsidian-skill
+```
+
 ### Manual install
 
 Clone the repo and copy the skill to your Claude Code skills directory:
 
 ```bash
 # Clone the repository
-git clone <repo-url>
+git clone https://github.com/lizhengyang-byte/Obsidian-skill.git
 
-# Copy to project-level skills
-mkdir -p /path/to/your-project/.claude/skills/obsidian-cli/references
-cp <repo-dir>/SKILL.md /path/to/your-project/.claude/skills/obsidian-cli/
-cp <repo-dir>/references/commands.md /path/to/your-project/.claude/skills/obsidian-cli/references/
+# Create skill directory
+mkdir -p .claude/skills/obsidian-cli/references
 
-# Or copy to global skills (available to all projects)
+# Copy skill files
+cp Obsidian-skill/SKILL.md .claude/skills/obsidian-cli/
+cp Obsidian-skill/references/commands.md .claude/skills/obsidian-cli/references/
+
+# Or install to global skills (available to all projects)
 mkdir -p ~/.claude/skills/obsidian-cli/references
-cp <repo-dir>/SKILL.md ~/.claude/skills/obsidian-cli/
-cp <repo-dir>/references/commands.md ~/.claude/skills/obsidian-cli/references/
+cp Obsidian-skill/SKILL.md ~/.claude/skills/obsidian-cli/
+cp Obsidian-skill/references/commands.md ~/.claude/skills/obsidian-cli/references/
 ```
 
 ## Usage
@@ -63,8 +74,13 @@ You can also manually invoke the skill with `/obsidian-cli` or `/obsidian`.
 ## Skill Structure
 
 ```
-obsidian-cli-skill/
-├── SKILL.md                    # Skill definition (YAML frontmatter + instructions)
+Obsidian-skill/
+├── SKILL.md                    # Core skill definition (copy this to .claude/skills/obsidian-cli/)
+├── skills/obsidian-cli/        # Mirror for agentskills.io publishing
+│   ├── SKILL.md
+│   ├── LICENSE.txt
+│   └── references/
+│       └── commands.md
 ├── references/
 │   └── commands.md             # Complete command reference (80+ commands)
 ├── README.md                   # This file
