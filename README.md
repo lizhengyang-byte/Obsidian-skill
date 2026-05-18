@@ -49,17 +49,11 @@ Once installed, Claude will automatically detect Obsidian-related requests and u
 ### Examples
 
 > **"Create a new note in my Obsidian vault called 'Meeting Notes' with content about the Q4 roadmap."**
-
 > **"Search my vault for anything related to 'action items' and show the context."**
-
 > **"Append a task to today's daily note: '- [ ] Review PR #42'."**
-
 > **"List all incomplete tasks in my vault."**
-
 > **"What files are in my Projects folder?"**
-
 > **"Set the Status property to 'Done' on my Meeting Notes file."**
-
 > **"Show me the backlinks for the file called 'Project Plan'."**
 
 ### Manual invocation
@@ -93,8 +87,14 @@ The skill covers **80+ commands** across these categories:
 | Links | `backlinks`, `links`, `unresolved`, `deadends`, `orphans` |
 | Vault Info | `files`, `folders`, `vault`, `vaults`, `wordcount`, `outline` |
 | Plugins & Themes | `plugins`, `plugin:enable/disable/install`, `themes`, `theme:set` |
+| History, Sync & Diff | `history`, `sync`, `diff` — full version management |
+| Aliases | `aliases` — list and query note aliases |
+| Bases (Databases) | `bases`, `base:create/query/views` |
+| Bookmarks | `bookmarks`, `bookmark` |
+| CSS Snippets | `snippets`, `snippet:enable/disable` |
+| Hotkeys | `hotkeys`, `hotkey` |
 | Automation | `command`, `commands`, `workspace`, `reload`, `restart` |
-| History & Sync | `history`, `history:read/restore`, `sync`, `sync:status` |
+| Developer | `eval`, `devtools`, `dev:cdp/console/css/debug/dom/errors/mobile/screenshot` |
 
 See [references/commands.md](references/commands.md) for the complete reference.
 

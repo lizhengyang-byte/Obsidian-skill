@@ -58,53 +58,57 @@ obsidian <command> [options]
 
 See `references/commands.md` for the complete list of all commands with their options.
 
-### Quick Reference by Category
+### Complete Command List by Category
 
 #### File Operations
 | Command | Description |
 |---------|-------------|
-| `create name=<name> [content=] [template=] [open] [overwrite]` | Create a new note |
+| `create name=<name> [content=] [template=] [open] [newtab] [overwrite]` | Create a new note |
 | `read [file=] [path=]` | Read a note's contents |
-| `append [file=] content= [inline]` | Append content to a note |
-| `prepend [file=] content= [inline]` | Prepend content (after frontmatter) |
+| `append [file=] [path=] content= [inline]` | Append content to a note |
+| `prepend [file=] [path=] content= [inline]` | Prepend content (after frontmatter) |
 | `delete [file=] [path=] [permanent]` | Delete a note |
-| `move [file=] to=<path>` | Move or rename a note |
-| `rename [file=] name=<name>` | Rename a note |
+| `move [file=] [path=] to=<path>` | Move a note to another folder |
+| `rename [file=] [path=] name=<name>` | Rename a note |
+| `file [file=] [path=]` | Show file info |
 
 #### Search & Navigation
 | Command | Description |
 |---------|-------------|
-| `search query=<text> [path=] [limit=] [case] [format=]` | Search vault contents |
-| `search:context query=<text> [limit=] [case] [format=]` | Search with surrounding context |
+| `search query=<text> [path=] [limit=] [total] [case] [format=]` | Search vault contents |
+| `search:context query=<text> [path=] [limit=] [case] [format=]` | Search with surrounding context |
+| `search:open [query=]` | Open search view in Obsidian |
 | `open [file=] [path=] [newtab]` | Open a file in Obsidian |
 | `random [folder=] [newtab]` | Open a random note |
-| `recents` | List recently opened files |
+| `random:read [folder=]` | Read a random note |
+| `recents [total]` | List recently opened files |
 | `tabs [ids]` | List open tabs |
+| `tab:open [group=] [file=] [view=]` | Open a new tab |
 
 #### Daily Notes
 | Command | Description |
 |---------|-------------|
-| `daily [paneType=]` | Open today's daily note |
+| `daily [paneType=tab\|split\|window]` | Open today's daily note |
 | `daily:read` | Read today's daily note |
-| `daily:append content= [inline] [open]` | Append to daily note |
-| `daily:prepend content= [inline] [open]` | Prepend to daily note |
+| `daily:append content= [inline] [open] [paneType=]` | Append to daily note |
+| `daily:prepend content= [inline] [open] [paneType=]` | Prepend to daily note |
 | `daily:path` | Get path to daily note |
 
 #### Properties & Tags
 | Command | Description |
 |---------|-------------|
-| `property:set name= value= [type=] [file=]` | Set a property |
-| `property:read name= [file=]` | Read a property value |
-| `property:remove name= [file=]` | Remove a property |
-| `properties [file=] [total] [counts] [format=]` | List properties in vault |
-| `tags [file=] [total] [counts] [sort=] [format=]` | List tags |
+| `property:set name= value= [type=] [file=] [path=]` | Set a property |
+| `property:read name= [file=] [path=]` | Read a property value |
+| `property:remove name= [file=] [path=]` | Remove a property |
+| `properties [file=] [path=] [name=] [total] [counts] [sort=] [active] [format=]` | List properties in vault |
+| `tags [file=] [path=] [total] [counts] [sort=] [active] [format=]` | List tags |
 | `tag name=<tag> [total] [verbose]` | Get tag info |
 
 #### Tasks
 | Command | Description |
 |---------|-------------|
-| `tasks [file=] [total] [done] [todo] [status=] [format=]` | List tasks |
-| `task [file=] [line=] [toggle/done/todo] [status=]` | Update a task's status |
+| `tasks [file=] [path=] [total] [done] [todo] [status=] [verbose] [active] [daily] [format=]` | List tasks |
+| `task [ref=] [file=] [path=] [line=] [toggle\|done\|todo] [daily] [status=]` | Show or update a task |
 
 #### Templates
 | Command | Description |
@@ -116,8 +120,8 @@ See `references/commands.md` for the complete list of all commands with their op
 #### Links
 | Command | Description |
 |---------|-------------|
-| `backlinks [file=] [counts] [total] [format=]` | List backlinks to a file |
-| `links [file=] [total]` | List outgoing links |
+| `backlinks [file=] [path=] [counts] [total] [format=]` | List backlinks to a file |
+| `links [file=] [path=] [total]` | List outgoing links from a file |
 | `unresolved [total] [counts] [verbose] [format=]` | List unresolved links |
 | `deadends [total] [all]` | Files with no outgoing links |
 | `orphans [total] [all]` | Files with no incoming links |
@@ -127,41 +131,109 @@ See `references/commands.md` for the complete list of all commands with their op
 |---------|-------------|
 | `files [folder=] [ext=] [total]` | List vault files |
 | `folders [folder=] [total]` | List vault folders |
-| `vault [info=]` | Show vault info |
+| `folder path= [info=files\|folders\|size]` | Show folder info |
+| `vault [info=name\|path\|files\|folders\|size]` | Show vault info |
 | `vaults [total] [verbose]` | List known vaults |
-| `wordcount [file=] [words] [characters]` | Count words and characters |
-| `outline [file=] [format=] [total]` | Show file headings |
+| `wordcount [file=] [path=] [words] [characters]` | Count words and characters |
+| `outline [file=] [path=] [format=tree\|md\|json] [total]` | Show file headings |
 
 #### Plugin & Theme Management
 | Command | Description |
 |---------|-------------|
-| `plugins [filter=] [versions] [format=]` | List installed plugins |
-| `plugin:enable id= [filter=]` | Enable a plugin |
-| `plugin:disable id= [filter=]` | Disable a plugin |
+| `plugins [filter=core\|community] [versions] [format=]` | List installed plugins |
+| `plugins:enabled [filter=core\|community] [versions] [format=]` | List enabled plugins |
+| `plugins:restrict [on\|off]` | Toggle or check restricted mode |
+| `plugin id=<plugin-id>` | Get plugin info |
+| `plugin:enable id= [filter=core\|community]` | Enable a plugin |
+| `plugin:disable id= [filter=core\|community]` | Disable a plugin |
 | `plugin:install id= [enable]` | Install a community plugin |
-| `plugin:uninstall id=` | Uninstall a plugin |
+| `plugin:uninstall id=` | Uninstall a community plugin |
+| `plugin:reload id=` | Reload a plugin (developer use) |
 | `themes [versions]` | List installed themes |
+| `theme [name=]` | Show active theme or get theme info |
 | `theme:set name=` | Set active theme |
 | `theme:install name= [enable]` | Install a community theme |
 | `theme:uninstall name=` | Uninstall a theme |
 
+#### History, Sync & Diff
+| Command | Description |
+|---------|-------------|
+| `history [file=] [path=]` | List file history versions |
+| `history:list` | List files with history |
+| `history:open [file=] [path=]` | Open file recovery |
+| `history:read [file=] [path=] [version=]` | Read a specific history version |
+| `history:restore [file=] [path=] version=<n>` | Restore a specific version |
+| `diff [file=] [path=] [from=] [to=] [filter=local\|sync]` | List or diff versions |
+| `sync:status` | Show sync status |
+| `sync [on\|off]` | Pause or resume sync |
+| `sync:deleted [total]` | List deleted files in sync |
+| `sync:history [file=] [path=] [total]` | List sync version history |
+| `sync:open [file=] [path=]` | Open sync history |
+| `sync:read [file=] [path=] version=<n>` | Read a sync version |
+| `sync:restore [file=] [path=] version=<n>` | Restore a sync version |
+
 #### Commands & Automation
 | Command | Description |
 |---------|-------------|
+| `help [<command>]` | Show list of all commands or help for a specific one |
 | `command id=<command-id>` | Execute any Obsidian command by ID |
 | `commands [filter=]` | List all available commands |
 | `workspace [ids]` | Show workspace tree |
 | `reload` | Reload the vault |
 | `restart` | Restart Obsidian |
 
-#### History & Sync
+#### Aliases
 | Command | Description |
 |---------|-------------|
-| `history [file=]` | List file history versions |
-| `history:read [file=] version=<n>` | Read a specific version |
-| `history:restore [file=] version=<n>` | Restore a specific version |
-| `sync:status` | Show sync status |
-| `sync [on/off]` | Pause or resume sync |
+| `aliases [file=] [path=] [total] [verbose] [active]` | List aliases in the vault |
+
+#### Bases (Databases)
+| Command | Description |
+|---------|-------------|
+| `bases` | List all base files in vault |
+| `base:create [file=] [path=] [view=] [name=] [content=] [open] [newtab]` | Create a new item in a base |
+| `base:query [file=] [path=] [view=] [format=]` | Query a base and return results |
+| `base:views [file=] [path=]` | List views in a base file |
+
+#### Bookmarks
+| Command | Description |
+|---------|-------------|
+| `bookmarks [total] [verbose] [format=]` | List bookmarks |
+| `bookmark [file=] [subpath=] [folder=] [search=] [url=] [title=]` | Add a bookmark |
+
+#### CSS Snippets
+| Command | Description |
+|---------|-------------|
+| `snippets` | List installed CSS snippets |
+| `snippets:enabled` | List enabled CSS snippets |
+| `snippet:enable name=` | Enable a CSS snippet |
+| `snippet:disable name=` | Disable a CSS snippet |
+
+#### Hotkeys
+| Command | Description |
+|---------|-------------|
+| `hotkeys [total] [verbose] [all] [format=]` | List hotkeys |
+| `hotkey id=<command-id> [verbose]` | Get hotkey for a command |
+
+#### Other
+| Command | Description |
+|---------|-------------|
+| `web url=<url> [newtab]` | Open URL in Obsidian web viewer |
+| `version` | Show Obsidian version |
+
+#### Developer Tools
+| Command | Description |
+|---------|-------------|
+| `eval code=<javascript>` | Execute JavaScript and return result |
+| `devtools` | Toggle Electron dev tools |
+| `dev:cdp method=<CDP.method> [params=]` | Run Chrome DevTools Protocol command |
+| `dev:console [clear] [limit=] [level=]` | Show captured console messages |
+| `dev:css selector= [prop=]` | Inspect CSS with source locations |
+| `dev:debug [on\|off]` | Attach/detach CDP debugger |
+| `dev:dom selector= [total] [text] [inner] [all] [attr=] [css=]` | Query DOM elements |
+| `dev:errors [clear]` | Show captured errors |
+| `dev:mobile [on\|off]` | Toggle mobile emulation |
+| `dev:screenshot [path=]` | Take a screenshot |
 
 ## Common Usage Patterns
 
