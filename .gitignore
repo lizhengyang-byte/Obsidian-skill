@@ -1,0 +1,8 @@
+*
+*/
+!.gitignore
+!skills/
+!skills/*
+!skills/obsidian-cli/
+!skills/obsidian-cli/*
+!skills/obsidian-cli/**/*
